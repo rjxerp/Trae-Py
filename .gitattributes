@@ -1,0 +1,6 @@
+# 所有文件默认使用 LF 换行符
+* text=auto eol=lf
+
+# 特定文件类型使用 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
