@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>任务提醒 · Task Reminder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>📋 任务提醒</h1>
+      <p class="subtitle">高效管理你的每一项待办，不错过任何重要时刻</p>
+    </header>
+
+    <section class="add-task">
+      <h2>➕ 添加新任务</h2>
+      <form id="task-form" class="task-form">
+        <div class="form-row">
+          <label>
+            <span>任务标题 <em>*</em></span>
+            <input type="text" id="task-title" placeholder="例如：完成项目周报" required maxlength="80" />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            <span>任务描述</span>
+            <textarea id="task-desc" placeholder="补充一些细节信息…" rows="2" maxlength="300"></textarea>
+          </label>
+        </div>
+        <div class="form-row grid-2">
+          <label>
+            <span>截止时间</span>
+            <input type="datetime-local" id="task-due" />
+          </label>
+          <label>
+            <span>提醒时间</span>
+            <input type="datetime-local" id="task-remind" />
+          </label>
+        </div>
+        <div class="form-row form-actions">
+          <button type="submit" class="btn btn-primary">添加任务</button>
+          <button type="reset" class="btn btn-ghost">重置</button>
+          <button type="button" id="enable-notification" class="btn btn-outline">🔔 开启通知</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="task-section">
+      <div class="section-top">
+        <h2>📝 我的任务</h2>
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="all">全部 <span class="badge" id="count-all">0</span></button>
+          <button class="filter" data-filter="pending">待办 <span class="badge" id="count-pending">0</span></button>
+          <button class="filter" data-filter="overdue">已过期 <span class="badge" id="count-overdue">0</span></button>
+          <button class="filter" data-filter="done">已完成 <span class="badge" id="count-done">0</span></button>
+        </div>
+      </div>
+
+      <div id="task-list" class="task-list"></div>
+
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">🎉</div>
+        <h3>暂时没有任务</h3>
+        <p>添加一个新任务，开始你的高效一天吧！</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
